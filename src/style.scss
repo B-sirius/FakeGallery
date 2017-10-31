@@ -10,45 +10,156 @@
     font-family: 'SuperiorTitle';
     src: url('./assets/SuperiorTitle-Black.woff');
 }
-
-.header_open-wrapper {
-    position: fixed;
-    top: -10px;
-    right: 17px;
-    width: 50px;
-    transition: transform 0.3s;
-    cursor: pointer;
-    &:hover {
-        transform: translate3d(0, 10px, 0);
+html {
+    font-size: 1vw;
+    @media only screen and (min-width: 1537.5px) {
+        font-size: 15px;
     }
-    .header_open-text_wrapper {
-        &:before {
-            display: block;
-            content: '';
-            width: 100%;
-            height: 35px;
-            background: #000;
-        }
-        .text {
-            position: relative;
-            font-family: 'FaktPro-Medium';
-            display: inline-block;
-            width: 100%;
-            padding-top: 8px;
-            text-align: center;
-            font-size: 10px;
-            letter-spacing: 1.62px;
-            color: #000;
-            &:after {
+    body {
+        font-family: serif;
+        .header {
+            position: fixed;
+            width: 100vw;
+            top: 25px;
+            z-index: 1;
+            .logo-link {
+                display: inline-block;
+                text-decoration: none;
                 position: absolute;
-                display: block;
-                content: '';
-                width: 75%;
-                height: 1px;
-                left: 12.5%;
-                background: #fff;
-                top: -7px;
+                left: 33px;
+                width: 31px;
+                height: 27px;
+                background: url('./assets/uq-logo.svg') no-repeat;
+                background-size: cover;
             }
+            .header_open-wrapper {
+                position: absolute;
+                top: -35px;
+                right: 17px;
+                width: 50px;
+                transition: transform 0.3s;
+                cursor: pointer;
+                &:hover {
+                    transform: translate3d(0, 10px, 0);
+                }
+                .header_open-text_wrapper {
+                    &:before {
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 35px;
+                        background: #000;
+                    }
+                    .text {
+                        position: relative;
+                        font-family: 'FaktPro-Medium';
+                        display: inline-block;
+                        width: 100%;
+                        padding-top: 8px;
+                        text-align: center;
+                        font-size: 10px;
+                        letter-spacing: 1.62px;
+                        color: #000;
+                        &:after {
+                            position: absolute;
+                            display: block;
+                            content: '';
+                            width: 75%;
+                            height: 1px;
+                            left: 12.5%;
+                            background: #fff;
+                            top: -7px;
+                        }
+                    }
+                }
+            }
+        }
+        .sidebar {
+            opacity: 0;
+            position: fixed;
+            left: 0;
+            top: 50%;
+            width: 8.3vw;
+            background: #eee;
+            height: 160px;
+            transition: 0.35s;
+            &.active {
+                opacity: 1;
+                transform: translate3d(0, -50%, 0);
+            }
+        }
+        .video-wrapper {
+            @keyframes videoFadein {
+                from{
+                    box-shadow: none;
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+                to {
+                    box-shadow: 3px 7px 16px -6px rgba(0,0,0,0.07), 15px 20px 37px -2px rgba(0,0,0,0.07), 20px 42px 80px 6px rgba(0,0,0,0.07), 20px 42px 120px 10px rgba(0,0,0,0.07);
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            margin-top: 10vh;
+            margin-left: 12.5vw;
+            width: 75vw;
+            height: 75vh;
+            // box-shadow: 3px 7px 16px -6px rgba(0,0,0,0.07), 15px 20px 37px -2px rgba(0,0,0,0.07), 20px 42px 80px 6px rgba(0,0,0,0.07), 20px 42px 120px 10px rgba(0,0,0,0.07);
+            transition: box-shadow 1.7s cubic-bezier(0.2, 0.57, 0, 1.04),
+                        opacity 1s,
+                        transform 1s cubic-bezier(0.2, 0.57, 0, 1.04);
+            animation: videoFadein 1.7s 0.9s cubic-bezier(0.2, 0.57, 0, 1.04) forwards;
+        }
+        .title-wrapper {
+            @keyframes titleFadein {
+                from {
+                    opacity: 0;
+                    transform: translate3d(-50px, 0, 0);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            position: absolute;
+            margin-top: -130px;
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .small-text-wrapper {
+                opacity: 0;
+                font-family: 'FaktPro-Medium';
+                font-size: 17px;
+                margin-left: 20%;
+                animation: titleFadein 0.75s 0.3s forwards;
+            }
+            .line {
+                opacity: 0;
+                height: 2px;
+                background: #000;
+                flex-grow: 1;
+                margin: 0 20px;
+                animation: titleFadein 0.75s 0.2s forwards;                
+            }
+            .big-text-wrapper {
+                opacity: 0;
+                font-family: 'SuperiorTitle';  
+                margin-right: 10%;
+                animation: titleFadein 0.75s forwards;                
+                .big-text {
+                    letter-spacing: 0.1px;
+                    line-height: 0.89;
+                    font-size: 9rem;
+                    transition: 0.6s;
+                    transition-delay: 0.35s;
+                    font-weight: 400;
+                }
+            }
+        }
+        .more-content {
+            height: 300vh;
         }
     }
 }
