@@ -104,6 +104,24 @@ html {
         .page-content {
             .first-part {
                 position: relative;
+                .bg-shape-wrapper {
+                    position: absolute;
+                    top: 20%;
+                    bottom: 15%;
+                    width: 100%;
+                    z-index: -1;
+                    .bg-shape {
+                        height: 0;
+                        transform-origin: 50% 0;
+                        background: #f7f7f6;
+                        margin-left: 8.3%;
+                        width: 30%;
+                        transition: 0.35s;
+                        &.active {
+                            height: 100%;
+                        }
+                    }
+                }
                 .video-wrapper {
                     @keyframes videoFadein {
                         from{
@@ -138,8 +156,7 @@ html {
                             transform: translate3d(0, 0, 0);
                         }
                     }
-                    position: absolute;
-                    margin-top: -130px;
+                    transform: translate3d(0, -70%, 0);
                     left: 0;
                     right: 0;
                     display: flex;
@@ -175,22 +192,61 @@ html {
                         }
                     }
                 }
-                .bg-shape-wrapper {
-                    position: absolute;
-                    top: 20%;
-                    bottom: 15%;
-                    width: 100%;
-                    z-index: -1;
-                    .bg-shape {
-                        height: 0;
-                        transform-origin: 50% 0;
-                        background: #f7f7f6;
-                        margin-left: 8.3%;
-                        width: 30%;
-                        transition: 0.35s;
-                        &.active {
+                .summary-wrapper {
+                    display: flex;
+                    align-items: center;
+                    .summary {
+                        font-family: "FaktPro-Light",Helvetica,Arial,sans-serif;
+                        margin-left: 12.5%;
+                        flex-basis: 62.5%;
+                        font-size: 4rem;
+                        line-height: 1.4;
+                        letter-spacing: -0.27rem;
+                        font-weight: lighter;
+                    }
+                }
+                .link-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 100px;
+                    margin-left: 12%;
+                    width: 33.3333%;
+                    .link {
+                        position: relative;
+                        .link_bg-wrapper {
+                            z-index: -1;
+                            position: absolute;
+                            width: 100%;
                             height: 100%;
+                            .link_bg {
+                                position: absolute;
+                                height: 100%;
+                                animation: sprinkle-wiggle 5s ease-in-out infinite;
+                                @keyframes sprinkle-wiggle {
+                                    0%, 25%, 50%, 75%, 100% {
+                                        transform: none;
+                                    }
+                                    12.5% {
+                                        transform: scale(1.07, 0.95) rotate(3deg) translate3d(2px, -2px, 0);
+                                    }
+                                    37.5% {
+                                        transform: scale(0.97, 1.03) rotate(1deg) translate3d(-1px, 2px, 0);
+                                    }
+                                    62.5% {
+                                        transform: scale(1.05, 0.98) rotate(4deg) translate3d(1px, 1px, 0);
+                                    }
+                                    87.5% {
+                                    }
+                                }
+                            }
                         }
+                        display: inline-block;
+                        line-height: 64px;
+                        font-family: 'SuperiorTitle', serif;
+                        font-size: 10px;
+                        letter-spacing: 0.18em;
+                        text-decoration: none;
+                        color: #000;
                     }
                 }
             }

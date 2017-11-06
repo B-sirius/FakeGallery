@@ -85,7 +85,7 @@ classListenerList.push(bgShapeClass);
 let posFn = (() => {
     let el = _.get('#js-bgShapeWrapper');
     return function() {
-        let f = 0.55 + window.scrollY * 0.002;
+        let f = 0.55 + window.scrollY * 0.001;
         el.style.transform = `matrix3d(1, -0.36397, 0, 0, 0, ${f}, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)`;
     }
 })();
